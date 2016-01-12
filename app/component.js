@@ -7,11 +7,15 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require('react');
 var Hello = (function (_super) {
     __extends(Hello, _super);
-    function Hello() {
-        _super.apply(this, arguments);
+    function Hello(props) {
+        _super.call(this, props);
+        this.state = { count: 1 };
     }
+    Hello.prototype.tick = function () {
+        this.setState({ count: this.state.count + 1 });
+    };
     Hello.prototype.render = function () {
-        return React.createElement("h1", null, "Hello world Cain !!");
+        return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.state.count), React.createElement("button", {onClick: this.tick.bind(this)}, "XXX"));
     };
     return Hello;
 })(React.Component);
