@@ -214,6 +214,47 @@ copy build 資料夾的 **index.html** 到 **dist**資料夾 中， dev 用掛�
 ```
 <script src="http://localhost:8080/webpack-dev-server.js"></script>
 ```
+## 用 bower 加掛第三方
+
+首先安裝 bower
+```
+npm install bower -g
+```
+產生 bower.json
+```
+bower init
+```
+例如安裝 jquery
+```
+bower install qruery --save
+```
+預設資料夾 ```bower_components```<br>
+如果使用 typescript 可以用 tsd 增加定義檔
+```
+tsd install jquery --save
+```
+webpack 中加入第三方外掛 ```webpack.config.js``` 中
+```
+//模組路徑
+var pathToJquery = path.resolve(__dirname, 'bower_components/jquery/dist/jquery.min.js');
+//module.exports 中增加 jquery 物件定義
+resolve: {
+        alias: {
+            'jquery':pathToJquery
+        }
+    },
+//加設這個 plugins 之後js不需要 require 就可以用
+plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+        })
+    ]
+```
+需要注意，$ 在閉包裡，如果要公開到全域可以在載入後加上
+```
+window['$'] = $;
+```
+
 
 ## 注意事項
 ```
