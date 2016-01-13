@@ -22,11 +22,13 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
+        "typings/jquery/jquery.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
         "typings/tsd.d.ts",
         "app/component.tsx",
-        "app/main.tsx"
+        "app/main.tsx",
+        "app/my_item.tsx"
     ],
     "atom": {
         "rewriteTsconfig": true

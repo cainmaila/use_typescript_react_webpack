@@ -1,14 +1,17 @@
 var path = require('path');
+var webpack = require('webpack');
 var node_modules = path.resolve(__dirname, 'node_modules');
 var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
 var pathToReactDom = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
+var pathToJquery = path.resolve(__dirname, 'bower_components/jquery/dist/jquery.min.js');
 
 module.exports = {
     entry: ['webpack/hot/dev-server', path.resolve(__dirname, 'app/main.tsx')],
     resolve: {
         alias: {
             'react': pathToReact,
-            'react-dom':pathToReactDom
+            'react-dom':pathToReactDom,
+            'jquery':pathToJquery
         }
     },
     output: {
@@ -23,7 +26,7 @@ module.exports = {
             query: {
                 presets: ['es2015', "react"]
             },
-            noParse: [pathToReact,pathToReactDom, node_modules]
+            noParse: [pathToReact,pathToReactDom,pathToJquery, node_modules]
         }, {
             test: /\.less$/,
             loader: 'style!css!less'
@@ -34,5 +37,10 @@ module.exports = {
             test: /\.ts(x?)$/,
             loader: 'babel-loader!ts-loader',
         }]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+        })
+    ]
 };

@@ -1,12 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
-// var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var pathToJquery = path.resolve(__dirname, 'bower_components/jquery/dist/jquery.min.js');
 var config = {
     entry: {
         app: path.resolve(__dirname, 'app/main.tsx'),
         // mobile: path.resolve(__dirname, 'app/mobile.js'),
         vendors: ['react','react-dom']
+        // jjqq:['./bower_components/jquery/dist/jquery.min.js']
+    },
+    resolve: {
+        alias: {
+            'jquery':pathToJquery
+        }
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -35,8 +41,10 @@ var config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
             filename: "vendors.js"
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery"
         })
     ]
 };
-
 module.exports = config;

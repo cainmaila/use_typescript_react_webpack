@@ -1,0 +1,19 @@
+{
+  "name": "use_typescript_react",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Cain.Chu <cainmaila@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cainmaila/use_typescript_react_webpack",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
