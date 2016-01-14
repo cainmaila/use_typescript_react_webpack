@@ -290,6 +290,45 @@ export default class Hello extends React.Component<any,any> {
         )
     }
 }
+
 ```
+
+## Signal 使用說明 
+
+這是一套事件傳遞框架
+
+安裝函示庫
+```
+npm install signals --save
+```
+安裝 td
+```
+tsd install js-signals --save
+```
+你可以做一個靜態 Class 方便全域使用
+```javascript
+//my_signals class
+import * as signals from 'signals';
+export default class MySignal  {
+    constructor(){
+        MySignal.signal = new signals.Signal();
+    };
+    static signal:Signal;
+}
+```
+宣告並註冊
+```javascript
+import MySignal from './mySignal';
+
+new MySignal(); //宣告
+MySignal.signal.add((message:string)=>alert(num)); //註冊
+//任何地方呼叫事件
+MySignal.sig.dispatch(message);
+```
+
+## Redux
+
+* 使用**redux** ，由於無法```tsd install``` 所以可能需要上網找一下，沒有 td  檔似乎編譯抱錯
+
 ## 參考網址
 [React 和 Webpack 小书](https://hainuo.gitbooks.io/react-webpack-cookbook/content/index.html)
