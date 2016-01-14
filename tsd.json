@@ -10,6 +10,9 @@
     },
     "react/react-dom.d.ts": {
       "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"
+    },
+    "js-signals/js-signals.d.ts": {
+      "commit": "1984ea435fe9e93a012d50db7773db58ae5d494b"
     }
   }
 }
