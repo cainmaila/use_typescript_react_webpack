@@ -5,25 +5,37 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require('react');
-var Hello = (function (_super) {
-    __extends(Hello, _super);
-    function Hello(props) {
+var react_redux_1 = require('react-redux');
+var My_Item = (function (_super) {
+    __extends(My_Item, _super);
+    function My_Item(props) {
         var _this = this;
         _super.call(this, props);
         this.state = {
             item_name: this.props.item_name,
         };
         this.click = function (e) {
-            console.log(e);
-            alert(_this.props.item_name);
+            var dispatch = _this.props.dispatch;
+            dispatch({ type: "ADD", num: 1 });
         };
     }
-    Hello.prototype.render = function () {
+    My_Item.prototype.render = function () {
         return React.createElement("div", {className: "myitem", onClick: this.click}, this.state.item_name);
     };
-    Hello.propTypes = { item_name: React.PropTypes.number };
-    Hello.defaultProps = { item_name: 0 };
-    return Hello;
+    My_Item.propTypes = { item_name: React.PropTypes.number };
+    My_Item.defaultProps = { item_name: 0 };
+    return My_Item;
 })(React.Component);
+function select(state, acc) {
+    return {
+        item_name: state.item_name
+    };
+}
+function mapDispatchToProps(dispatch) {
+    var _this = this;
+    return {
+        onIncrement: function () { return dispatch(_this.click()); }
+    };
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Hello;
+exports.default = react_redux_1.connect(select)(My_Item);

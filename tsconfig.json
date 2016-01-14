@@ -23,8 +23,10 @@
     "buildOnSave": false,
     "files": [
         "typings/jquery/jquery.d.ts",
+        "typings/react-redux/react-redux.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
+        "typings/redux/redux.d.ts",
         "typings/tsd.d.ts",
         "app/component.tsx",
         "app/main.tsx",

@@ -4,14 +4,15 @@ var node_modules = path.resolve(__dirname, 'node_modules');
 var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
 var pathToReactDom = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
 var pathToJquery = path.resolve(__dirname, 'bower_components/jquery/dist/jquery.min.js');
-
+// var pathToReact_redux = path.resolve(node_modules,'react-redux/dist/react-redux.min.js');
 module.exports = {
     entry: ['webpack/hot/dev-server', path.resolve(__dirname, 'app/main.tsx')],
     resolve: {
         alias: {
             'react': pathToReact,
             'react-dom':pathToReactDom,
-            'jquery':pathToJquery
+            'jquery':pathToJquery,
+            // 'react-redux':pathToReact_redux
         }
     },
     output: {
