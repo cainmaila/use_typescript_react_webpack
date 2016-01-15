@@ -19,9 +19,12 @@ var initialState = {
     ]
 };
 var my_reducer = function (state, acc) {
-    return state;
+    if (acc.type === "ADD") {
+        state.data.initialCount = state.data.initialCount * 1 + acc.key * 1;
+    }
+    return { data: state.data };
 };
-var store = redux_1.createStore(my_reducer, initialState);
+var store = redux_1.createStore(my_reducer, { data: initialState });
 ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(component_1.default, null)), document.getElementById('app'));
 window['$'] = $;
 new mySignal_1.default();

@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import Hello from './component';
 // import * as $ from 'jquery';
 import Sig from './mySignal';
+// import * as objectAssign from 'object-assign';
 
 import {
   Store,
@@ -30,10 +31,14 @@ const initialState = {
     ]
 };
 let my_reducer = (state,acc) =>{
-    // alert(JSON.stringify(acc));
-    return state;
+    // alert(JSON.stringify(state));
+    if (acc.type === "ADD") {
+        state.data.initialCount = state.data.initialCount * 1 + acc.key * 1;
+        // alert(JSON.stringify(state));
+    }
+    return {data:state.data};
 }
-const store: Store = createStore(my_reducer,initialState);
+const store: Store = createStore(my_reducer,{data:initialState});
 // const store2: Store = createStore((data)=>{return data},{item_name:999});
 ReactDOM.render(
     <Provider store={store}>

@@ -20,11 +20,11 @@ class Hello extends React.Component<any,any> {
 
     render() {
         return <div>
-            <h1>Hello world Cain !! {this.props.initialCount}</h1>
+            <h1>Hello world Cain !! {this.props.data.initialCount}</h1>
             <button onClick={this.tick.bind(this)}>XXX</button>
             <div>
                 {
-                    this.props.items.map((item_ob,id)=>{
+                    this.props.data.items.map((item_ob,id)=>{
                             return <MyItem item_name={item_ob.item_name} key={id}></MyItem>
                         }
                     )
@@ -35,15 +35,14 @@ class Hello extends React.Component<any,any> {
 
     tick = ()=> {
         // this.setState({count: this.state.count + 1});
-        this.props.otherActions.bind(this,2);
-        // this.props.dispatch({type:"ADD",key:1});
+        // this.props.otherActions.bind(this,2);
+        // this.props.otherActions(2);
+        this.props.dispatch({type:"ADD",key:1});
     }
 
 }
-function actionCreators(key){
-    var state = this.props.getState();
-    state.initialCount++;
-    return {type:"ADD",state};
+function actionCreators(key:number){
+    return {type:"ADD",key:key};
 }
 // state 将由 store 提供
 function select(state) {
@@ -54,7 +53,7 @@ function select(state) {
     return state;
 }
 // 哪些 action 创建函数是我们想要通过 props 获取的？
-function mapDispatchProps(dispatch,acc) {
+function mapDispatchProps(dispatch) {
     // alert(JSON.stringify(dispatch))
   return {
     otherActions: bindActionCreators(actionCreators, dispatch)
@@ -62,5 +61,5 @@ function mapDispatchProps(dispatch,acc) {
 }
 
 export default connect(
-    select,mapDispatchProps
+    select//,mapDispatchProps
 )(Hello);
