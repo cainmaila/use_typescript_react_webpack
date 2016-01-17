@@ -67,6 +67,7 @@ mkdir dist
 ## 建立 TypeScript 專案
 ```
 tsd init
+tsd install node --save
 tsd install react --save
 tsd install react-dom --save
 ```
@@ -329,6 +330,54 @@ MySignal.sig.dispatch(message);
 ## Redux
 
 * 使用**redux** ，由於無法```tsd install``` 所以可能需要上網找一下，沒有 td  檔似乎編譯抱錯
+
+## i18next 多語系支援套件
+
+npm 安裝 i18next
+```bash
+npm install i18next --save
+npm install i18next-xhr-backend --save //自動載入語系資源
+npm install i18next-browser-languagedetector --save //自動判斷語系
+npm install i18next-localstorage-cache --save //case 語系檔，發布版再評估使用
+```
+
+tsd 安裝
+```bash
+tsd install i18next --save
+```
+
+ 沒看到 ```i18next-xhr-backend``` 與 ```i18next-browser-languagedetector``` 可能自己寫或是抓別人的
+ 
+ How to User
+ ```javascript
+import * as i18n from 'i18next';
+var XHR = require('i18next-xhr-backend');
+var LngDetector  = require('i18next-browser-languagedetector');
+
+i18n
+    .use(XHR)
+    .init({
+        // lng: 'zh-tw',
+        detection: {
+            order: ['querystring', 'cookie', 'localStorage', 'navigator'],
+            // lookupQuerystring: 'lng',
+            // lookupCookie: 'i18next',
+            // lookupLocalStorage: 'i18nextLng',
+            // caches: ['localStorage', 'cookie']
+        }
+    },(err,t)=>{
+        console.log(i18n.t('til'));
+    });
+ ```
+
+>> 如果跳出 ```use``` 無法使用，得再 ```i18next.d.ts``` 中加一個
+```
+use(ob:any): any;
+```
+
+i18next 使用參考網址
+
+[how to use i18next](http://i18next.com/docs/)
 
 ## 參考網址
 [React 和 Webpack 小书](https://hainuo.gitbooks.io/react-webpack-cookbook/content/index.html)
