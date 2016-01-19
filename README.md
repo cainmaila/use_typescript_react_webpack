@@ -1,5 +1,18 @@
 # WebPack + React + TypeScript
 
+**React** 用來開發View，採用虛擬DOM，可跨越傳統DOM效能瓶頸，開發的View元件，方便重複使用。
+
+**Redux** 配合React，資料可直接綁定View，與傳遞是事件。
+
+**TypeScript** 協助結構性編寫js
+
+**Less** 編寫css繼承語法
+
+以上透過**Webpack**自動化透過**babel**編譯成 javascript (js + css)
+
+
+![Alt text](Front-end.png)
+
 ## 環境
 ```
 npm install npm
