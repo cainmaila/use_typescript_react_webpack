@@ -16,13 +16,19 @@ var Hello = (function (_super) {
         this.state = {
             count: this.props.initialCount,
         };
-        this.tick = function () {
-            _this.props.dispatch({ type: "ADD", key: 1 });
+        this.tick = function (e) {
+            e.stopPropagation();
+            console.log(e.target);
+            _this.props.otherActions(5);
+        };
+        this.tickKey = function (key) {
+            _this.props.otherActions(key);
         };
     }
     Hello.prototype.render = function () {
-        return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.props.data.initialCount), React.createElement("button", {onClick: this.tick.bind(this)}, "XXX"), React.createElement("div", null, this.props.data.items.map(function (item_ob, id) {
-            return React.createElement(my_item_1.default, {item_name: item_ob.item_name, key: id});
+        var _this = this;
+        return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.props.initialCount), React.createElement("button", {onClick: this.tick}, "XXX"), React.createElement("div", null, this.props.items.map(function (item_ob, id) {
+            return React.createElement(my_item_1.default, {item_name: item_ob.item_name, keyId: id, tickKey: _this.tickKey});
         })));
     };
     Hello.propTypes = {
@@ -44,4 +50,4 @@ function mapDispatchProps(dispatch) {
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(select)(Hello);
+exports.default = react_redux_1.connect(select, mapDispatchProps)(Hello);

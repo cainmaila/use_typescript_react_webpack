@@ -13,6 +13,12 @@
     },
     "js-signals/js-signals.d.ts": {
       "commit": "1984ea435fe9e93a012d50db7773db58ae5d494b"
+    },
+    "node/node.d.ts": {
+      "commit": "70bf7e2bfeb0d5b1b651ef3219bcc65c8eec117e"
+    },
+    "webpack/webpack-env.d.ts": {
+      "commit": "93bae1bb4c887c1375a4c1f0c3bb849ff06b8ac6"
     }
   }
 }

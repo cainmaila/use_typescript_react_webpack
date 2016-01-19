@@ -10,11 +10,14 @@ export default class My_Item extends React.Component<any,any> {
         super(props);
     }
     render() {
+
         return <div className="myitem" onClick={this.click}>{this.props.item_name}</div>
     }
     click = (e)=>{
-        this.props.dispatch({type:"ADD",key:this.props.key});
+        console.log(console.log(this.props));
+        this.props.tickKey(this.props.keyId);
+        // this.props.dispatch({type:"ADD",key:this.props.key});
         // this.setState({item_name: this.props.item_name+1});
-        Sig.sig.dispatch(this.props.item_name);
+        // Sig.sig.dispatch(this.props.item_name);
     }
 }

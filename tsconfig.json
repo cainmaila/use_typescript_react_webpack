@@ -22,9 +22,12 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
+        "app/myclass.ts",
+        "app/myclass2.ts",
         "app/mySignal.ts",
         "typings/jquery/jquery.d.ts",
         "typings/js-signals/js-signals.d.ts",
+        "typings/node/node.d.ts",
         "typings/object-assign.d.ts",
         "typings/react-redux/react-redux.d.ts",
         "typings/react/react-dom.d.ts",

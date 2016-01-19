@@ -5,3 +5,4 @@
 /// <reference path="react-redux/react-redux.d.ts" />
 /// <reference path="js-signals/js-signals.d.ts" />
 /// <reference path="object-assign.d.ts" />
+/// <reference path="node/node.d.ts" />

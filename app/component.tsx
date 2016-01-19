@@ -20,26 +20,29 @@ class Hello extends React.Component<any,any> {
 
     render() {
         return <div>
-            <h1>Hello world Cain !! {this.props.data.initialCount}</h1>
-            <button onClick={this.tick.bind(this)}>XXX</button>
+            <h1>Hello world Cain !! {this.props.initialCount}</h1>
+            <button onClick={this.tick}>XXX</button>
             <div>
                 {
-                    this.props.data.items.map((item_ob,id)=>{
-                            return <MyItem item_name={item_ob.item_name} key={id}></MyItem>
+                    this.props.items.map((item_ob,id)=>{
+                            return <MyItem item_name={item_ob.item_name} keyId={id} tickKey={this.tickKey}></MyItem>
                         }
                     )
                 }
             </div>
         </div>
     }
-
-    tick = ()=> {
+    tick = (e)=> {
+        e.stopPropagation();
+        console.log(e.target);
         // this.setState({count: this.state.count + 1});
         // this.props.otherActions.bind(this,2);
-        // this.props.otherActions(2);
-        this.props.dispatch({type:"ADD",key:1});
+        this.props.otherActions(5);
+        // this.props.dispatch({type:"ADD",key:1});
     }
-
+    tickKey = key => {
+        this.props.otherActions(key);
+    }
 }
 function actionCreators(key:number){
     return {type:"ADD",key:key};
@@ -61,5 +64,5 @@ function mapDispatchProps(dispatch) {
 }
 
 export default connect(
-    select//,mapDispatchProps
+    select,mapDispatchProps
 )(Hello);

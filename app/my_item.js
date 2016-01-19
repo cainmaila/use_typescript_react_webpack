@@ -5,7 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require('react');
-var mySignal_1 = require('./mySignal');
 var My_Item = (function (_super) {
     __extends(My_Item, _super);
     function My_Item(props) {
@@ -15,8 +14,8 @@ var My_Item = (function (_super) {
             item_name: this.props.item_name,
         };
         this.click = function (e) {
-            _this.props.dispatch({ type: "ADD", key: _this.props.key });
-            mySignal_1.default.sig.dispatch(_this.props.item_name);
+            console.log(console.log(_this.props));
+            _this.props.tickKey(_this.props.keyId);
         };
     }
     My_Item.prototype.render = function () {

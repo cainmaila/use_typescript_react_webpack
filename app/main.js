@@ -3,13 +3,14 @@ require("./less/main.less");
 var React = require('react');
 var ReactDOM = require('react-dom');
 var component_1 = require('./component');
-var mySignal_1 = require('./mySignal');
+var mySignal_ts_1 = require('./mySignal.ts');
+var objectAssign = require('object-assign');
 var redux_1 = require('redux');
 var react_redux_1 = require('react-redux');
 var initialState = {
     my_name: "cain",
     mail: 'cainmaila@gmail.com',
-    initialCount: 0,
+    initialCount: 888,
     items: [
         { item_name: 1 },
         { item_name: 3 },
@@ -20,12 +21,12 @@ var initialState = {
 };
 var my_reducer = function (state, acc) {
     if (acc.type === "ADD") {
-        state.data.initialCount = state.data.initialCount * 1 + acc.key * 1;
+        state = objectAssign({}, state, { initialCount: state.initialCount * 1 + acc.key * 1 });
     }
-    return { data: state.data };
+    return state;
 };
-var store = redux_1.createStore(my_reducer, { data: initialState });
+var store = redux_1.createStore(my_reducer, initialState);
 ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(component_1.default, null)), document.getElementById('app'));
 window['$'] = $;
-new mySignal_1.default();
-mySignal_1.default.sig.add(function (num) { return console.log("Sig output : " + num); });
+new mySignal_ts_1.default();
+mySignal_ts_1.default.sig.add(function (num) { return console.log("Sig output : " + num); });

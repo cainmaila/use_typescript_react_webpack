@@ -3,8 +3,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Hello from './component';
 // import * as $ from 'jquery';
-import Sig from './mySignal';
+import Sig from './mySignal.ts';
 // import * as objectAssign from 'object-assign';
+var objectAssign = require('object-assign');
+import * as AA from './myclass.ts';
+import * as BB from './myclass2.ts';
 
 import {
   Store,
@@ -21,7 +24,7 @@ import {
 const initialState = {
     my_name : "cain",
     mail : 'cainmaila@gmail.com',
-    initialCount : 0,
+    initialCount : 888,
     items:[
         {item_name:1},
         {item_name:3},
@@ -30,15 +33,20 @@ const initialState = {
         {item_name:9}
     ]
 };
-let my_reducer = (state,acc) =>{
-    // alert(JSON.stringify(state));
+let my_reducer = (state,acc)=>{
+
+    // if(acc.type == "INIT"){
+    //     return initialState;
+    // }else
+    // var bb;
     if (acc.type === "ADD") {
-        state.data.initialCount = state.data.initialCount * 1 + acc.key * 1;
-        // alert(JSON.stringify(state));
+        state = objectAssign({},state,{initialCount:state.initialCount*1+acc.key*1})
     }
-    return {data:state.data};
+
+    // alert(JSON.stringify(state));
+    return state;
 }
-const store: Store = createStore(my_reducer,{data:initialState});
+const store: Store = createStore(my_reducer,initialState);
 // const store2: Store = createStore((data)=>{return data},{item_name:999});
 ReactDOM.render(
     <Provider store={store}>
@@ -54,3 +62,8 @@ window['$'] = $;
 
 new Sig();
 Sig.sig.add((num:number)=>console.log("Sig output : "+num));
+// alert(AA.A1.play);
+// alert(BB.B1.play);
+// A1.play();
+// var aa = new A1();
+// aa.play();
