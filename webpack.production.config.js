@@ -6,7 +6,7 @@ var config = {
     entry: {
         app: path.resolve(__dirname, 'app/main.tsx'),
         // mobile: path.resolve(__dirname, 'app/mobile.js'),
-        vendors: ['react','react-dom']
+        vendors: ['react','react-dom','redux','react-redux']
         // jjqq:['./bower_components/jquery/dist/jquery.min.js']
     },
     resolve: {
@@ -22,7 +22,7 @@ var config = {
         loaders: [{
             test: /\.(js|jsx)$/,
             loader: 'babel',
-            exclude: /node_modules/,
+            exclude: /node_modules|bower_components/,
             query: {
                 presets: ['es2015', "react"]
             }

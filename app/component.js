@@ -28,7 +28,7 @@ var Hello = (function (_super) {
     Hello.prototype.render = function () {
         var _this = this;
         return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.props.initialCount), React.createElement("button", {onClick: this.tick}, "XXX"), React.createElement("div", null, this.props.items.map(function (item_ob, id) {
-            return React.createElement(my_item_1.default, {item_name: item_ob.item_name, keyId: id, tickKey: _this.tickKey});
+            return React.createElement(my_item_1.default, {item_name: item_ob.item_name, keyId: id, key: id, tickKey: _this.tickKey});
         })));
     };
     Hello.propTypes = {

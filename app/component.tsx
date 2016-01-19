@@ -25,7 +25,7 @@ class Hello extends React.Component<any,any> {
             <div>
                 {
                     this.props.items.map((item_ob,id)=>{
-                            return <MyItem item_name={item_ob.item_name} keyId={id} tickKey={this.tickKey}></MyItem>
+                            return <MyItem item_name={item_ob.item_name} keyId={id} key={id} tickKey={this.tickKey}></MyItem>
                         }
                     )
                 }
