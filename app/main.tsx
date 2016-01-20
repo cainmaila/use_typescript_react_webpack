@@ -2,6 +2,7 @@ import "./less/main.less";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Hello from './component';
+import CainUi from './cainui';
 import * as $ from 'jquery';
 import Sig from './mySignal.ts';
 var objectAssign = require('object-assign');
@@ -12,11 +13,18 @@ import { createAction, handleAction, handleActions } from 'redux-actions';
 var Route = require('react-router').Route;
 var browserHistory = require('react-router').browserHistory;
 var Router = require('react-router').Router;
+var Link = require('react-router').Link;
 // import { syncHistory, routeReducer } from 'redux-simple-router';
 var syncHistory = require('redux-simple-router').syncHistory;
 var routeReducer = require('redux-simple-router').routeReducer;
 import { createHistory } from 'history';
-
+let history = createHistory();
+// history.listen(location => {
+//   console.log(location.pathname)
+// });
+// history.push({
+//   pathname: '/the/path'
+// })
 import {
   Store,
   compose,
@@ -44,8 +52,10 @@ const initialState = {
 };
 
 const routes = (
-  <Route path="/" component={Hello}>
-  </Route>
+    <Route path="/" component={Hello}>
+        <Route path="c" component={CainUi}></Route>
+        <Route path="a" component={CainUi}></Route>
+    </Route>
 );
 
 function logger({ getState }) {
@@ -53,16 +63,9 @@ function logger({ getState }) {
     console.log('will dispatch', action);
     // 调用 middleware 链中下一个 middleware 的 dispatch。
     let returnValue = next(action);
-    console.log('state after dispatch', getState());
+    // console.log('state after dispatch', getState());
     // 一般会是 action 本身，除非
     // 后面的 middleware 修改了它。
-    return returnValue;
-  };
-}
-function logger2() {
-  return (next) => (action) => {
-    console.log('will dispatch 2', action);
-    let returnValue = next(action);
     return returnValue;
   };
 }
@@ -72,8 +75,11 @@ let reducer = handleActions({
 },initialState);
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(logger,logger2,reduxRouterMiddleware);
+const createStoreWithMiddleware = applyMiddleware(logger,reduxRouterMiddleware);
 let store = createStoreWithMiddleware(createStore)(reducer);
+
+reduxRouterMiddleware.listenForReplays(store);
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>

@@ -38,6 +38,7 @@
         "typings/redux-actions.d.ts",
         "typings/redux/redux.d.ts",
         "typings/tsd.d.ts",
+        "app/cainui.tsx",
         "app/component.tsx",
         "app/main.tsx",
         "app/my_item.tsx"

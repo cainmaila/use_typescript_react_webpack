@@ -9,6 +9,7 @@ var my_item_1 = require('./my_item');
 var react_redux_1 = require('react-redux');
 var redux_1 = require('redux');
 var redux_actions_1 = require('redux-actions');
+var routeActions = require('redux-simple-router').routeActions;
 var Hello = (function (_super) {
     __extends(Hello, _super);
     function Hello(props) {
@@ -18,11 +19,10 @@ var Hello = (function (_super) {
             count: this.props.initialCount,
         };
         this.tick = function (e) {
-            e.stopPropagation();
-            _this.props.otherActions(5);
+            e.stopPropagation(e);
+            _this.props.dispatch(routeActions.push('/c'));
         };
         this.tickKey = function (key) {
-            _this.props.otherActions(key);
         };
     }
     Hello.prototype.render = function () {
@@ -39,14 +39,17 @@ var Hello = (function (_super) {
     return Hello;
 })(React.Component);
 var actionCreators = redux_actions_1.createAction("ADD");
+var changePage = function (page_) {
+    return routeActions.push(page_);
+};
 function select(state) {
-    console.log(state);
     return state;
 }
 function mapDispatchProps(dispatch) {
     return {
-        otherActions: redux_1.bindActionCreators(actionCreators, dispatch)
+        otherActions: redux_1.bindActionCreators(actionCreators, dispatch),
+        pageC: redux_1.bindActionCreators(changePage, dispatch)
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(select, mapDispatchProps)(Hello);
+exports.default = react_redux_1.connect(select)(Hello);
