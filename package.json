@@ -29,12 +29,15 @@
     "typescript": "^1.7.5"
   },
   "dependencies": {
+    "history": "^2.0.0-rc2",
     "object-assign": "^4.0.1",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
+    "react-router": "^2.0.0-rc5",
     "redux": "^3.0.5",
     "redux-actions": "^0.9.1",
+    "redux-simple-router": "^2.0.4",
     "signals": "^1.0.0"
   }
 }

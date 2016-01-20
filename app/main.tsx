@@ -2,12 +2,21 @@ import "./less/main.less";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Hello from './component';
-// import * as $ from 'jquery';
+import * as $ from 'jquery';
 import Sig from './mySignal.ts';
 var objectAssign = require('object-assign');
 import myReducer from './my_reducer.ts';
 import * as BB from './myclass2.ts';
 import { createAction, handleAction, handleActions } from 'redux-actions';
+// import { Router, Route, browserHistory } from 'react-router';
+var Route = require('react-router').Route;
+var browserHistory = require('react-router').browserHistory;
+var Router = require('react-router').Router;
+// import { syncHistory, routeReducer } from 'redux-simple-router';
+var syncHistory = require('redux-simple-router').syncHistory;
+var routeReducer = require('redux-simple-router').routeReducer;
+import { createHistory } from 'history';
+
 import {
   Store,
   compose,
@@ -34,6 +43,11 @@ const initialState = {
     ]
 };
 
+const routes = (
+  <Route path="/" component={Hello}>
+  </Route>
+);
+
 function logger({ getState }) {
   return (next) => (action) => {
     console.log('will dispatch', action);
@@ -45,9 +59,6 @@ function logger({ getState }) {
     return returnValue;
   };
 }
-function logMe(){
-    console.log('logMe!!');
-}
 function logger2() {
   return (next) => (action) => {
     console.log('will dispatch 2', action);
@@ -55,23 +66,22 @@ function logger2() {
     return returnValue;
   };
 }
+
 let reducer = handleActions({
     'ADD':myReducer
 },initialState);
-let createStoreWithMiddleware = applyMiddleware(logger,logger2)(createStore);
-let store = createStoreWithMiddleware(reducer); //applyMiddleware 用法
-// const store: Store = createStore(reducer,initialState); //原本用法
-// const store2: Store = createStore((data)=>{return data},{item_name:999});
+
+const reduxRouterMiddleware = syncHistory(browserHistory);
+const createStoreWithMiddleware = applyMiddleware(logger,logger2,reduxRouterMiddleware);
+let store = createStoreWithMiddleware(createStore)(reducer);
 ReactDOM.render(
     <Provider store={store}>
-        <Hello />
+        <Router history={browserHistory}>
+            {routes}
+        </Router>
     </Provider>,
     document.getElementById('app')
 );
-// ReactDOM.render(
-//     <Hello />,
-//     document.getElementById('app2')
-// );
 window['$'] = $;
 
 new Sig();

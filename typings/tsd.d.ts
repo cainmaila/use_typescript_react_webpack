@@ -7,3 +7,5 @@
 /// <reference path="object-assign.d.ts" />
 /// <reference path="node/node.d.ts" />
 /// <reference path="redux-actions.d.ts" />
+/// <reference path="history/history.d.ts" />
+/// <reference path="react-router/history.d.ts" />

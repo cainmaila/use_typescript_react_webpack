@@ -40,6 +40,7 @@ var Hello = (function (_super) {
 })(React.Component);
 var actionCreators = redux_actions_1.createAction("ADD");
 function select(state) {
+    console.log(state);
     return state;
 }
 function mapDispatchProps(dispatch) {
