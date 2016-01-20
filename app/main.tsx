@@ -4,7 +4,6 @@ import * as ReactDOM from 'react-dom';
 import Hello from './component';
 // import * as $ from 'jquery';
 import Sig from './mySignal.ts';
-// import * as objectAssign from 'object-assign';
 var objectAssign = require('object-assign');
 import * as AA from './myclass.ts';
 import * as BB from './myclass2.ts';
@@ -35,15 +34,9 @@ const initialState = {
 };
 let my_reducer = (state,acc)=>{
 
-    // if(acc.type == "INIT"){
-    //     return initialState;
-    // }else
-    // var bb;
     if (acc.type === "ADD") {
         state = objectAssign({},state,{initialCount:state.initialCount*1+acc.key*1})
     }
-
-    // alert(JSON.stringify(state));
     return state;
 }
 const store: Store = createStore(my_reducer,initialState);
@@ -62,8 +55,3 @@ window['$'] = $;
 
 new Sig();
 Sig.sig.add((num:number)=>console.log("Sig output : "+num));
-// alert(AA.A1.play);
-// alert(BB.B1.play);
-// A1.play();
-// var aa = new A1();
-// aa.play();

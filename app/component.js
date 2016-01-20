@@ -18,7 +18,6 @@ var Hello = (function (_super) {
         };
         this.tick = function (e) {
             e.stopPropagation();
-            console.log(e.target);
             _this.props.otherActions(5);
         };
         this.tickKey = function (key) {
