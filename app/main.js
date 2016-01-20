@@ -25,7 +25,27 @@ var my_reducer = function (state, acc) {
     }
     return state;
 };
-var store = redux_1.createStore(my_reducer, initialState);
+function logger(_a) {
+    var getState = _a.getState;
+    return function (next) { return function (action) {
+        console.log('will dispatch', action);
+        var returnValue = next(action);
+        console.log('state after dispatch', getState());
+        return returnValue;
+    }; };
+}
+function logMe() {
+    console.log('logMe!!');
+}
+function logger2() {
+    return function (next) { return function (action) {
+        console.log('will dispatch 2', action);
+        var returnValue = next(action);
+        return returnValue;
+    }; };
+}
+var createStoreWithMiddleware = redux_1.applyMiddleware(logger, logger2)(redux_1.createStore);
+var store = createStoreWithMiddleware(my_reducer, initialState);
 ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(component_1.default, null)), document.getElementById('app'));
 window['$'] = $;
 new mySignal_ts_1.default();

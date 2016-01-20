@@ -13,7 +13,8 @@ import {
   compose,
   createStore,
   bindActionCreators,
-  combineReducers
+  combineReducers,
+  applyMiddleware
 } from 'redux';
 import {
   connect,
@@ -39,7 +40,31 @@ let my_reducer = (state,acc)=>{
     }
     return state;
 }
-const store: Store = createStore(my_reducer,initialState);
+function logger({ getState }) {
+  return (next) => (action) => {
+    console.log('will dispatch', action);
+    // 调用 middleware 链中下一个 middleware 的 dispatch。
+    let returnValue = next(action);
+    console.log('state after dispatch', getState());
+    // 一般会是 action 本身，除非
+    // 后面的 middleware 修改了它。
+    return returnValue;
+  };
+}
+function logMe(){
+    console.log('logMe!!');
+}
+function logger2() {
+  return (next) => (action) => {
+    console.log('will dispatch 2', action);
+    let returnValue = next(action);
+    return returnValue;
+  };
+}
+
+let createStoreWithMiddleware = applyMiddleware(logger,logger2)(createStore);
+let store = createStoreWithMiddleware(my_reducer, initialState); //applyMiddleware 用法
+// const store: Store = createStore(my_reducer,initialState);  //原本用法
 // const store2: Store = createStore((data)=>{return data},{item_name:999});
 ReactDOM.render(
     <Provider store={store}>
