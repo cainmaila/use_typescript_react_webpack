@@ -12,7 +12,7 @@ var react_redux_1 = require('react-redux');
 var initialState = {
     my_name: "cain",
     mail: 'cainmaila@gmail.com',
-    initialCount: 999,
+    initialCount: 888,
     items: [
         { item_name: 1 },
         { item_name: 3 },
