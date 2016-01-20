@@ -5,9 +5,9 @@ import Hello from './component';
 // import * as $ from 'jquery';
 import Sig from './mySignal.ts';
 var objectAssign = require('object-assign');
-import * as AA from './myclass.ts';
+import myReducer from './my_reducer.ts';
 import * as BB from './myclass2.ts';
-
+import { createAction, handleAction, handleActions } from 'redux-actions';
 import {
   Store,
   compose,
@@ -24,7 +24,7 @@ import {
 const initialState = {
     my_name : "cain",
     mail : 'cainmaila@gmail.com',
-    initialCount : 888,
+    initialCount : 999,
     items:[
         {item_name:1},
         {item_name:3},
@@ -33,13 +33,7 @@ const initialState = {
         {item_name:9}
     ]
 };
-let my_reducer = (state,acc)=>{
 
-    if (acc.type === "ADD") {
-        state = objectAssign({},state,{initialCount:state.initialCount*1+acc.key*1})
-    }
-    return state;
-}
 function logger({ getState }) {
   return (next) => (action) => {
     console.log('will dispatch', action);
@@ -61,10 +55,12 @@ function logger2() {
     return returnValue;
   };
 }
-
+let reducer = handleActions({
+    'ADD':myReducer
+},initialState);
 let createStoreWithMiddleware = applyMiddleware(logger,logger2)(createStore);
-let store = createStoreWithMiddleware(my_reducer, initialState); //applyMiddleware 用法
-// const store: Store = createStore(my_reducer,initialState);  //原本用法
+let store = createStoreWithMiddleware(reducer); //applyMiddleware 用法
+// const store: Store = createStore(reducer,initialState); //原本用法
 // const store2: Store = createStore((data)=>{return data},{item_name:999});
 ReactDOM.render(
     <Provider store={store}>

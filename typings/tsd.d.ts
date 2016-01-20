@@ -6,3 +6,4 @@
 /// <reference path="js-signals/js-signals.d.ts" />
 /// <reference path="object-assign.d.ts" />
 /// <reference path="node/node.d.ts" />
+/// <reference path="redux-actions.d.ts" />

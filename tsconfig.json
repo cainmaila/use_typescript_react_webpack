@@ -22,7 +22,7 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
-        "app/myclass.ts",
+        "app/my_reducer.ts",
         "app/myclass2.ts",
         "app/mySignal.ts",
         "typings/jquery/jquery.d.ts",
@@ -32,6 +32,7 @@
         "typings/react-redux/react-redux.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
+        "typings/redux-actions.d.ts",
         "typings/redux/redux.d.ts",
         "typings/tsd.d.ts",
         "app/component.tsx",

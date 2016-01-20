@@ -14,7 +14,6 @@ var My_Item = (function (_super) {
             item_name: this.props.item_name,
         };
         this.click = function (e) {
-            console.log(console.log(_this.props));
             _this.props.tickKey(_this.props.keyId);
         };
     }

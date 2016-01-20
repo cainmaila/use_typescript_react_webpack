@@ -2,6 +2,7 @@ import * as React from 'react';
 import MyItem from './my_item';
 import { connect  } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { createAction, handleAction, handleActions } from 'redux-actions';
 class Hello extends React.Component<any,any> {
 
     static propTypes = {
@@ -39,9 +40,7 @@ class Hello extends React.Component<any,any> {
         this.props.otherActions(key);
     }
 }
-function actionCreators(key:number){
-    return {type:"ADD",key:key};
-}
+var actionCreators = createAction("ADD"); //redux-actions 生成事件
 // state 将由 store 提供
 function select(state) {
     return state;

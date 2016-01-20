@@ -8,6 +8,7 @@ var React = require('react');
 var my_item_1 = require('./my_item');
 var react_redux_1 = require('react-redux');
 var redux_1 = require('redux');
+var redux_actions_1 = require('redux-actions');
 var Hello = (function (_super) {
     __extends(Hello, _super);
     function Hello(props) {
@@ -37,9 +38,7 @@ var Hello = (function (_super) {
     Hello.defaultProps = { initialCount: 0, items: [] };
     return Hello;
 })(React.Component);
-function actionCreators(key) {
-    return { type: "ADD", key: key };
-}
+var actionCreators = redux_actions_1.createAction("ADD");
 function select(state) {
     return state;
 }
