@@ -16,7 +16,6 @@
 ## 環境
 ```
 npm install npm
-npm install-g babel-cli
 ```
 
 ## 安裝 Webpack + React
@@ -342,7 +341,17 @@ MySignal.sig.dispatch(message);
 
 ## Redux
 
+安裝
+```
+npm install --save redux
+npm install --save react-redux
+```
+
 * 使用**redux** ，由於無法```tsd install``` 所以可能需要上網找一下，沒有 td  檔似乎編譯抱錯
+
+### 參考資料
+
+[Redux Git Book](http://camsong.github.io/redux-in-chinese/)
 
 ## i18next 多語系支援套件
 
