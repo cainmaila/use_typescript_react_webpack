@@ -3,6 +3,7 @@ import MyItem from './my_item';
 import { connect  } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createAction, handleAction, handleActions } from 'redux-actions';
+var Link = require('react-router').Link;
 var routeActions = require('redux-simple-router').routeActions;
 class Hello extends React.Component<any,any> {
 
@@ -21,6 +22,7 @@ class Hello extends React.Component<any,any> {
     render() {
         return <div>
             <h1>Hello world Cain !! {this.props.initialCount}</h1>
+            <Link to="/c">XXXXXX to C</Link>
             <button onClick={this.tick}>XXX</button>
             <div>
                 {

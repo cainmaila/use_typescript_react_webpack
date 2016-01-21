@@ -9,3 +9,5 @@
 /// <reference path="redux-actions.d.ts" />
 /// <reference path="history/history.d.ts" />
 /// <reference path="react-router/history.d.ts" />
+/// <reference path="mime/mime.d.ts" />
+/// <reference path="serve-static/serve-static.d.ts" />

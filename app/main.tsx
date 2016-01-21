@@ -13,12 +13,11 @@ import { createAction, handleAction, handleActions } from 'redux-actions';
 var Route = require('react-router').Route;
 var browserHistory = require('react-router').browserHistory;
 var Router = require('react-router').Router;
-var Link = require('react-router').Link;
 // import { syncHistory, routeReducer } from 'redux-simple-router';
 var syncHistory = require('redux-simple-router').syncHistory;
 var routeReducer = require('redux-simple-router').routeReducer;
-import { createHistory } from 'history';
-let history = createHistory();
+// import { createHistory } from 'history';
+// let history = createHistory();
 // history.listen(location => {
 //   console.log(location.pathname)
 // });
@@ -78,7 +77,7 @@ const reduxRouterMiddleware = syncHistory(browserHistory);
 const createStoreWithMiddleware = applyMiddleware(logger,reduxRouterMiddleware);
 let store = createStoreWithMiddleware(createStore)(reducer);
 
-reduxRouterMiddleware.listenForReplays(store);
+// reduxRouterMiddleware.listenForReplays(store);
 
 ReactDOM.render(
     <Provider store={store}>

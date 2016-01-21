@@ -9,6 +9,7 @@ var my_item_1 = require('./my_item');
 var react_redux_1 = require('react-redux');
 var redux_1 = require('redux');
 var redux_actions_1 = require('redux-actions');
+var Link = require('react-router').Link;
 var routeActions = require('redux-simple-router').routeActions;
 var Hello = (function (_super) {
     __extends(Hello, _super);
@@ -27,7 +28,7 @@ var Hello = (function (_super) {
     }
     Hello.prototype.render = function () {
         var _this = this;
-        return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.props.initialCount), React.createElement("button", {onClick: this.tick}, "XXX"), React.createElement("div", null, this.props.items.map(function (item_ob, id) {
+        return React.createElement("div", null, React.createElement("h1", null, "Hello world Cain !! ", this.props.initialCount), React.createElement(Link, {to: "/c"}, "XXXXXX to C"), React.createElement("button", {onClick: this.tick}, "XXX"), React.createElement("div", null, this.props.items.map(function (item_ob, id) {
             return React.createElement(my_item_1.default, {item_name: item_ob.item_name, keyId: id, key: id, tickKey: _this.tickKey});
         })));
     };

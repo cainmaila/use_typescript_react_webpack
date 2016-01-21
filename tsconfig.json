@@ -25,6 +25,7 @@
         "app/my_reducer.ts",
         "app/myclass2.ts",
         "app/mySignal.ts",
+        "server/web.ts",
         "typings/history/history.d.ts",
         "typings/jquery/jquery.d.ts",
         "typings/js-signals/js-signals.d.ts",

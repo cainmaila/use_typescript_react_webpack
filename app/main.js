@@ -12,11 +12,8 @@ var redux_actions_1 = require('redux-actions');
 var Route = require('react-router').Route;
 var browserHistory = require('react-router').browserHistory;
 var Router = require('react-router').Router;
-var Link = require('react-router').Link;
 var syncHistory = require('redux-simple-router').syncHistory;
 var routeReducer = require('redux-simple-router').routeReducer;
-var history_1 = require('history');
-var history = history_1.createHistory();
 var redux_1 = require('redux');
 var react_redux_1 = require('react-redux');
 var initialState = {
@@ -46,7 +43,6 @@ var reducer = redux_actions_1.handleActions({
 var reduxRouterMiddleware = syncHistory(browserHistory);
 var createStoreWithMiddleware = redux_1.applyMiddleware(logger, reduxRouterMiddleware);
 var store = createStoreWithMiddleware(redux_1.createStore)(reducer);
-reduxRouterMiddleware.listenForReplays(store);
 ReactDOM.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(Router, {history: browserHistory}, routes)), document.getElementById('app'));
 window['$'] = $;
 new mySignal_ts_1.default();
