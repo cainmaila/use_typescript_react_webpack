@@ -11,19 +11,12 @@ import * as BB from './myclass2.ts';
 import { createAction, handleAction, handleActions } from 'redux-actions';
 // import { Router, Route, browserHistory } from 'react-router';
 var Route = require('react-router').Route;
+var IndexRoute = require('react-router').IndexRoute;
 var browserHistory = require('react-router').browserHistory;
 var Router = require('react-router').Router;
 // import { syncHistory, routeReducer } from 'redux-simple-router';
 var syncHistory = require('redux-simple-router').syncHistory;
 var routeReducer = require('redux-simple-router').routeReducer;
-// import { createHistory } from 'history';
-// let history = createHistory();
-// history.listen(location => {
-//   console.log(location.pathname)
-// });
-// history.push({
-//   pathname: '/the/path'
-// })
 import {
   Store,
   compose,
@@ -51,7 +44,8 @@ const initialState = {
 };
 
 const routes = (
-    <Route path="/" component={Hello}>
+    <Route path="/">
+        <IndexRoute component={Hello}/>
         <Route path="c" component={CainUi}></Route>
         <Route path="a" component={CainUi}></Route>
     </Route>

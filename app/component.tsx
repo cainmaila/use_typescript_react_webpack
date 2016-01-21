@@ -36,16 +36,10 @@ class Hello extends React.Component<any,any> {
     }
     tick = (e)=> {
         e.stopPropagation(e);
-        // this.props.otherActions(5);
-        // this.props.pageC("/c");
-        // this.props.dispatch({type:"ADD",key:1});
-        // this.props.dispatch({type:"ADD",key:1});
-        this.props.dispatch(routeActions.push('/c'));
-        // console.log(routeActions.push('/c'));
-        // console.log(createAction("ADD")(1));
+        this.props.pageC("/c");
     }
     tickKey = key => {
-        // this.props.otherActions(key);
+        this.props.otherActions(key);
     }
 }
 var actionCreators = createAction("ADD"); //redux-actions 生成事件
@@ -67,5 +61,5 @@ function mapDispatchProps(dispatch) {
 }
 
 export default connect(
-    select//,mapDispatchProps
+    select,mapDispatchProps
 )(Hello);

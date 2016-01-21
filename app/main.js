@@ -10,6 +10,7 @@ var objectAssign = require('object-assign');
 var my_reducer_ts_1 = require('./my_reducer.ts');
 var redux_actions_1 = require('redux-actions');
 var Route = require('react-router').Route;
+var IndexRoute = require('react-router').IndexRoute;
 var browserHistory = require('react-router').browserHistory;
 var Router = require('react-router').Router;
 var syncHistory = require('redux-simple-router').syncHistory;
@@ -28,7 +29,7 @@ var initialState = {
         { item_name: 9 }
     ]
 };
-var routes = (React.createElement(Route, {path: "/", component: component_1.default}, React.createElement(Route, {path: "c", component: cainui_1.default}), React.createElement(Route, {path: "a", component: cainui_1.default})));
+var routes = (React.createElement(Route, {path: "/"}, React.createElement(IndexRoute, {component: component_1.default}), React.createElement(Route, {path: "c", component: cainui_1.default}), React.createElement(Route, {path: "a", component: cainui_1.default})));
 function logger(_a) {
     var getState = _a.getState;
     return function (next) { return function (action) {

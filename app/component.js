@@ -21,9 +21,10 @@ var Hello = (function (_super) {
         };
         this.tick = function (e) {
             e.stopPropagation(e);
-            _this.props.dispatch(routeActions.push('/c'));
+            _this.props.pageC("/c");
         };
         this.tickKey = function (key) {
+            _this.props.otherActions(key);
         };
     }
     Hello.prototype.render = function () {
@@ -53,4 +54,4 @@ function mapDispatchProps(dispatch) {
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = react_redux_1.connect(select)(Hello);
+exports.default = react_redux_1.connect(select, mapDispatchProps)(Hello);

@@ -4,7 +4,7 @@ import * as path from 'path';
 const port = process.env.PORT || 8080;
 const app = express();
 app.use(express.static('dist'));
-app.use('/c', (req, res) => {
+app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../', 'dist/index.html'));
 });
 app.listen(port, () => {
