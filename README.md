@@ -349,6 +349,10 @@ npm install --save react-redux
 
 * 使用**redux** ，由於無法```tsd install``` 所以可能需要上網找一下，沒有 td  檔似乎編譯抱錯
 
+## React-Router 2.0 + Redux-simple-router 
+
+請見 git ```use_redux-simple-router``` 
+
 ### 參考資料
 
 [Redux Git Book](http://camsong.github.io/redux-in-chinese/)

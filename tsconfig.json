@@ -25,7 +25,7 @@
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
         "typings/tsd.d.ts",
-        "app/component.tsx",
+        "app/component/Hello.tsx",
         "app/main.tsx"
     ],
     "atom": {

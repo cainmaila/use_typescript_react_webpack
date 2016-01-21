@@ -1,12 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
-// var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var config = {
     entry: {
         app: path.resolve(__dirname, 'app/main.tsx'),
         // mobile: path.resolve(__dirname, 'app/mobile.js'),
-        vendors: ['react','react-dom']
+        vendors: ['react','react-dom'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

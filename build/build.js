@@ -124,10 +124,10 @@
 	__webpack_require__(3);
 	var React = __webpack_require__(8);
 	var ReactDOM = __webpack_require__(9);
-	var component_1 = __webpack_require__(10);
+	var Hello_1 = __webpack_require__(10);
 	main();
 	function main() {
-	    ReactDOM.render(React.createElement(component_1.default, null), document.getElementById('app'));
+	    ReactDOM.render(React.createElement(Hello_1.default, null), document.getElementById('app'));
 	}
 
 /***/ },
