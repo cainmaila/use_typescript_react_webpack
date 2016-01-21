@@ -22,10 +22,13 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
+        "typings/node/node.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
         "typings/tsd.d.ts",
+        "web/web.ts",
         "app/component.tsx",
+        "app/component2.tsx",
         "app/main.tsx"
     ],
     "atom": {
