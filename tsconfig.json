@@ -44,6 +44,7 @@
         "typings/tsd.d.ts",
         "app/cainui.tsx",
         "app/component.tsx",
+        "app/component/LoginView.tsx",
         "app/main.tsx",
         "app/my_item.tsx"
     ],

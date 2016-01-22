@@ -31,16 +31,7 @@ import {
 } from 'react-redux';
 
 const initialState = {
-    my_name : "cain",
-    mail : 'cainmaila@gmail.com',
-    initialCount : 999,
-    items:[
-        {item_name:1},
-        {item_name:3},
-        {item_name:5},
-        {item_name:7},
-        {item_name:9}
-    ]
+    dev:"loginDemo"
 };
 
 const routes = (

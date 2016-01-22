@@ -18,16 +18,7 @@ var routeReducer = require('redux-simple-router').routeReducer;
 var redux_1 = require('redux');
 var react_redux_1 = require('react-redux');
 var initialState = {
-    my_name: "cain",
-    mail: 'cainmaila@gmail.com',
-    initialCount: 999,
-    items: [
-        { item_name: 1 },
-        { item_name: 3 },
-        { item_name: 5 },
-        { item_name: 7 },
-        { item_name: 9 }
-    ]
+    dev: "loginDemo"
 };
 var routes = (React.createElement(Route, {path: "/"}, React.createElement(IndexRoute, {component: component_1.default}), React.createElement(Route, {path: "c", component: cainui_1.default}), React.createElement(Route, {path: "a", component: cainui_1.default})));
 function logger(_a) {
