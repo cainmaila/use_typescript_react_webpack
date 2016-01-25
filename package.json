@@ -29,7 +29,11 @@
     "typescript": "^1.7.5"
   },
   "dependencies": {
+    "object-assign": "^4.0.1",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react-dom": "^0.14.5",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.6",
+    "redux-actions": "^0.9.1"
   }
 }
