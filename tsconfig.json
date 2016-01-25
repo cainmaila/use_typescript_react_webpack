@@ -45,6 +45,7 @@
         "app/cainui.tsx",
         "app/component.tsx",
         "app/component/LoginView.tsx",
+        "app/component/RegView.tsx",
         "app/main.tsx",
         "app/my_item.tsx"
     ],

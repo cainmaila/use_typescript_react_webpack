@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Hello from './component';
 import CainUi from './cainui';
+import RegView from './component/RegView.tsx';
 import * as $ from 'jquery';
 import Sig from './mySignal.ts';
 var objectAssign = require('object-assign');
@@ -36,7 +37,7 @@ const initialState = {
 
 const routes = (
     <Route path="/">
-        <IndexRoute component={Hello}/>
+        <IndexRoute component={RegView}/>
         <Route path="c" component={CainUi}></Route>
         <Route path="a" component={CainUi}></Route>
     </Route>
@@ -53,13 +54,25 @@ function logger({ getState }) {
     return returnValue;
   };
 }
+function reg_post(){
+    return (next) => (action) => {
+        if(action.type==="REG_POST"){
+            setTimeout(()=>{
+                store.dispatch({type:"OOK"});
+            },1000);
+        }else{
+            return next(action)
+        }
+    };
+}
 
 let reducer = handleActions({
-    'ADD':myReducer
+    'ADD':myReducer,
+    'OOK':myReducer
 },initialState);
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(logger,reduxRouterMiddleware);
+const createStoreWithMiddleware = applyMiddleware(logger,reg_post,reduxRouterMiddleware);
 let store = createStoreWithMiddleware(createStore)(reducer);
 
 // reduxRouterMiddleware.listenForReplays(store);
