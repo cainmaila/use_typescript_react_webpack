@@ -23,12 +23,15 @@
     "buildOnSave": false,
     "files": [
         "app/reducer/reducer_tmp.ts",
+        "typings/node/node.d.ts",
         "typings/react-redux/react-redux.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",
+        "typings/redux-actions/redux-actions.d.ts",
         "typings/redux/redux.d.ts",
         "typings/tsd.d.ts",
         "app/component/Hello.tsx",
+        "app/component/ReduxComponent.tsx",
         "app/main.tsx"
     ],
     "atom": {
